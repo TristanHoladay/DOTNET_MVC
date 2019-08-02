@@ -10,7 +10,7 @@ namespace MyFirstAPI.Controllers
     [ApiController]
     public class PeopleController : ControllerBase
     {
-
+        
         private static readonly List<Person> _people = new List<Person>
         {
             new Person
@@ -25,6 +25,7 @@ namespace MyFirstAPI.Controllers
                 Name = "Leia Organa",
                 HairColor = "brown"
             }
+
         };
 
         // GET api/people
