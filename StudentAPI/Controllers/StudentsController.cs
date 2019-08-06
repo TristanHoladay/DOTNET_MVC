@@ -15,6 +15,13 @@ namespace StudentAPI.Controllers
 
         private readonly IStudentService _studentService;
 
+
+        public StudentsController()
+        {
+            _studentService = new StudentService();
+        }
+
+
         public StudentsController(IStudentService studentService)
         {
             _studentService = studentService;
