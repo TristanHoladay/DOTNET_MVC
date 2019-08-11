@@ -20,12 +20,16 @@ namespace BooksAPI.Services
         public IEnumerable<Book> GetAll()
         {
             //Return the DbSet Books as a list
-           return _bookContext.books.ToList();
+           return _bookContext.books
+                .Include(a => a.Author)
+                .ToList();
         }
 
         public Book Get(int id)
         {
-            return _bookContext.books.FirstOrDefault(b => b.Id == id);
+            return _bookContext.books
+                .Include(a => a.Author)
+                .FirstOrDefault(b => b.Id == id);
         }
 
         public Book Add(Book newBook)
@@ -36,8 +40,16 @@ namespace BooksAPI.Services
             {
                 throw new ApplicationException("You cannot make identical duplicate entries of books.");
             }
-            _bookContext.books.Add(newBook);
-            _bookContext.SaveChanges();
+            
+            if(newBook.AuthorId == 0)
+            {
+                throw new ApplicationException("Missing Author Id.");
+            }
+            
+                _bookContext.books.Add(newBook);
+                _bookContext.SaveChanges();
+            
+            
 
             return newBook;
         }

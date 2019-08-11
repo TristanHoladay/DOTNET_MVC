@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentAPI_UnitTest", "Stud
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksAPI", "BooksAPI\BooksAPI.csproj", "{742A6361-B553-4DB3-B550-C79D1D09638E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksAPI_UnitTest", "BooksAPI_UnitTest\BooksAPI_UnitTest.csproj", "{C32CA5AC-7982-4D2F-84C5-2040A12E30DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{742A6361-B553-4DB3-B550-C79D1D09638E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{742A6361-B553-4DB3-B550-C79D1D09638E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{742A6361-B553-4DB3-B550-C79D1D09638E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C32CA5AC-7982-4D2F-84C5-2040A12E30DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C32CA5AC-7982-4D2F-84C5-2040A12E30DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C32CA5AC-7982-4D2F-84C5-2040A12E30DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C32CA5AC-7982-4D2F-84C5-2040A12E30DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

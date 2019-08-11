@@ -83,8 +83,7 @@ namespace BooksAPI.Controllers
 
             _bookService.Delete(book);
                 return NoContent();
-            
-            
+        
         }
     }
 }
