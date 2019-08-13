@@ -12,6 +12,9 @@ namespace BooksAPI.Services
 
         Book Get(int id);
 
+        IEnumerable<Book> GetBooksForAuthor(int id);
+        IEnumerable<Book> GetBooksForPublisher(int publisherId);
+
         Book Add(Book newBook);
 
         Book Update(Book updatedBook);

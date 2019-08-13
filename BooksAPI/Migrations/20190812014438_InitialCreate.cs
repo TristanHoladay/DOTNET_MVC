@@ -23,14 +23,33 @@ namespace BooksAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Publisher",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true),
+                    FoundedYear = table.Column<int>(nullable: false),
+                    CountryOfOrigin = table.Column<string>(nullable: true),
+                    HeadQuartersLocation = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Publisher", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "books",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(maxLength: 250, nullable: false),
-                    Category = table.Column<string>(nullable: false),
-                    AuthorId = table.Column<int>(nullable: false)
+                    OriginalLanguage = table.Column<string>(nullable: true),
+                    Genre = table.Column<string>(nullable: true),
+                    PublicationYear = table.Column<int>(nullable: false),
+                    AuthorId = table.Column<int>(nullable: false),
+                    PublisherId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,7 +60,23 @@ namespace BooksAPI.Migrations
                         principalTable: "authors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_books_Publisher_PublisherId",
+                        column: x => x.PublisherId,
+                        principalTable: "Publisher",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Publisher",
+                columns: new[] { "Id", "CountryOfOrigin", "FoundedYear", "HeadQuartersLocation", "Name" },
+                values: new object[] { 1, "USA", 1925, "NY, NY", "Viking Press" });
+
+            migrationBuilder.InsertData(
+                table: "Publisher",
+                columns: new[] { "Id", "CountryOfOrigin", "FoundedYear", "HeadQuartersLocation", "Name" },
+                values: new object[] { 2, "USA", 1897, "NY, NY", "Doubleday" });
 
             migrationBuilder.InsertData(
                 table: "authors",
@@ -55,23 +90,28 @@ namespace BooksAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "books",
-                columns: new[] { "Id", "AuthorId", "Category", "Title" },
-                values: new object[] { 1, 1, "Fiction", "The Grapes of Wrath" });
+                columns: new[] { "Id", "AuthorId", "Genre", "OriginalLanguage", "PublicationYear", "PublisherId", "Title" },
+                values: new object[] { 1, 1, "Novel", "English", 1939, 1, "The Grapes of Wrath" });
 
             migrationBuilder.InsertData(
                 table: "books",
-                columns: new[] { "Id", "AuthorId", "Category", "Title" },
-                values: new object[] { 2, 1, "Fiction", "Cannery Row" });
+                columns: new[] { "Id", "AuthorId", "Genre", "OriginalLanguage", "PublicationYear", "PublisherId", "Title" },
+                values: new object[] { 2, 1, "Regional", "English", 1945, 1, "Cannery Row" });
 
             migrationBuilder.InsertData(
                 table: "books",
-                columns: new[] { "Id", "AuthorId", "Category", "Title" },
-                values: new object[] { 3, 2, "Fiction", "The Shining" });
+                columns: new[] { "Id", "AuthorId", "Genre", "OriginalLanguage", "PublicationYear", "PublisherId", "Title" },
+                values: new object[] { 3, 2, "Horror", "English", 1977, 2, "The Shining" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_books_AuthorId",
                 table: "books",
                 column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_books_PublisherId",
+                table: "books",
+                column: "PublisherId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -81,6 +121,9 @@ namespace BooksAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "authors");
+
+            migrationBuilder.DropTable(
+                name: "Publisher");
         }
     }
 }

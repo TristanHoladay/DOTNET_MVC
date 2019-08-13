@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BooksAPI.Models;
 using BooksAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using BooksAPI.ApiModels;
 
 namespace BooksAPI.Controllers
 {
@@ -24,29 +25,55 @@ namespace BooksAPI.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_bookService.GetAll());
+            var bookModels = _bookService
+                .GetAll()
+                .ToApiModels();
+
+            return Ok(bookModels);
         }
 
         // GET api/books/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Book book = _bookService.Get(id);
+            var book = _bookService.Get(id);
 
             if (book == null)
                 return NotFound();
 
-            return Ok(_bookService.Get(id));
+            return Ok(book.ToApiModel());
 
+        }
+
+        // GET /api/authors/{authorId}/books
+        [HttpGet("/api/authors/{authorId}/books")]
+        public IActionResult GetBooksForAuthor(int authorId)
+        {
+            var bookModels = _bookService
+                .GetBooksForAuthor(authorId)
+                .ToApiModels();
+
+            return Ok(bookModels);
+        }
+
+        //GET /api/publishers/{publisherId}/books
+        [HttpGet("/api/publishers/{publisherId}/books")]
+        public IActionResult GetBooksForPublisher(int publisherId)
+        {
+            var bookModels = _bookService
+                .GetBooksForPublisher(publisherId)
+                .ToApiModels();
+
+            return Ok(bookModels);
         }
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody] Book newbook)
+        public IActionResult Post([FromBody] BookModel newbook)
         {
             try
             {
-                _bookService.Add(newbook);
+                _bookService.Add(newbook.ToDomainModel());
             }
             catch (ApplicationException ex)
             {
@@ -60,10 +87,10 @@ namespace BooksAPI.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Book updatedBook)
+        public IActionResult Put(int id, [FromBody] BookModel updatedBook)
         {
 
-            Book book = _bookService.Update(updatedBook);
+            var book = _bookService.Update(updatedBook.ToDomainModel());
 
             if (book == null)
                 return NotFound();

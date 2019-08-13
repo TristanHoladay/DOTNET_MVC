@@ -32,6 +32,23 @@ namespace BooksAPI.Services
                 .FirstOrDefault(b => b.Id == id);
         }
 
+        public IEnumerable<Book> GetBooksForAuthor(int authorId)
+        {
+            return _bookContext.books
+                .Include(b => b.Publisher)
+                .Include(b => b.Author)
+                .Where(b => b.AuthorId == authorId)
+                .ToList();
+        }
+
+        public IEnumerable<Book> GetBooksForPublisher(int publisherId)
+        {
+            return _bookContext.books
+                .Include(b => b.Publisher)
+                .Include(b => b.Author)
+                .Where(b => b.PublisherId == publisherId)
+                .ToList();
+        }
         public Book Add(Book newBook)
         {
             Book book = _bookContext.books.FirstOrDefault(b => b.Title == newBook.Title);
