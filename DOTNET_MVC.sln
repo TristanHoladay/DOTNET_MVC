@@ -11,9 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentAPI", "StudentAPI\St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentAPI_UnitTest", "StudentAPI_UnitTest\StudentAPI_UnitTest.csproj", "{84AE5A71-2B11-4337-906F-6F084278F145}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksAPI", "BooksAPI\BooksAPI.csproj", "{742A6361-B553-4DB3-B550-C79D1D09638E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksAPI", "BooksAPI\BooksAPI.csproj", "{742A6361-B553-4DB3-B550-C79D1D09638E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksAPI_UnitTest", "BooksAPI_UnitTest\BooksAPI_UnitTest.csproj", "{C32CA5AC-7982-4D2F-84C5-2040A12E30DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksAPI_UnitTest", "BooksAPI_UnitTest\BooksAPI_UnitTest.csproj", "{C32CA5AC-7982-4D2F-84C5-2040A12E30DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksAPI.Core", "BooksAPI.Core\BooksAPI.Core.csproj", "{D3CF6785-B02B-4D62-8488-7A73FEECEDDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksAPI.Infrastructure", "BooksAPI.Infrastructure\BooksAPI.Infrastructure.csproj", "{C0705C18-25DA-4BCB-A023-553E4D7F29B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{C32CA5AC-7982-4D2F-84C5-2040A12E30DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C32CA5AC-7982-4D2F-84C5-2040A12E30DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C32CA5AC-7982-4D2F-84C5-2040A12E30DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3CF6785-B02B-4D62-8488-7A73FEECEDDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3CF6785-B02B-4D62-8488-7A73FEECEDDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3CF6785-B02B-4D62-8488-7A73FEECEDDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3CF6785-B02B-4D62-8488-7A73FEECEDDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0705C18-25DA-4BCB-A023-553E4D7F29B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0705C18-25DA-4BCB-A023-553E4D7F29B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0705C18-25DA-4BCB-A023-553E4D7F29B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0705C18-25DA-4BCB-A023-553E4D7F29B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

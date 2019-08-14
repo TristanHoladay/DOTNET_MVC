@@ -125,7 +125,7 @@ namespace BooksAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Publisher");
+                    b.ToTable("publishers");
 
                     b.HasData(
                         new

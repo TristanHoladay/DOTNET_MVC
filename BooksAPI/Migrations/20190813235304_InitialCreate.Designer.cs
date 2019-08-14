@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BooksAPI.Migrations
 {
     [DbContext(typeof(BookContext))]
-    [Migration("20190812014438_InitialCreate")]
+    [Migration("20190813235304_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -127,7 +127,7 @@ namespace BooksAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Publisher");
+                    b.ToTable("publishers");
 
                     b.HasData(
                         new

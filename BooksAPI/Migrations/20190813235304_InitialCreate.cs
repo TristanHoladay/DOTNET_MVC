@@ -23,7 +23,7 @@ namespace BooksAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Publisher",
+                name: "publishers",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -35,7 +35,7 @@ namespace BooksAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Publisher", x => x.Id);
+                    table.PrimaryKey("PK_publishers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,22 +61,12 @@ namespace BooksAPI.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_books_Publisher_PublisherId",
+                        name: "FK_books_publishers_PublisherId",
                         column: x => x.PublisherId,
-                        principalTable: "Publisher",
+                        principalTable: "publishers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.InsertData(
-                table: "Publisher",
-                columns: new[] { "Id", "CountryOfOrigin", "FoundedYear", "HeadQuartersLocation", "Name" },
-                values: new object[] { 1, "USA", 1925, "NY, NY", "Viking Press" });
-
-            migrationBuilder.InsertData(
-                table: "Publisher",
-                columns: new[] { "Id", "CountryOfOrigin", "FoundedYear", "HeadQuartersLocation", "Name" },
-                values: new object[] { 2, "USA", 1897, "NY, NY", "Doubleday" });
 
             migrationBuilder.InsertData(
                 table: "authors",
@@ -87,6 +77,16 @@ namespace BooksAPI.Migrations
                 table: "authors",
                 columns: new[] { "Id", "BirthDate", "FirstName", "LastName" },
                 values: new object[] { 2, new DateTime(1947, 9, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "Stephen", "King" });
+
+            migrationBuilder.InsertData(
+                table: "publishers",
+                columns: new[] { "Id", "CountryOfOrigin", "FoundedYear", "HeadQuartersLocation", "Name" },
+                values: new object[] { 1, "USA", 1925, "NY, NY", "Viking Press" });
+
+            migrationBuilder.InsertData(
+                table: "publishers",
+                columns: new[] { "Id", "CountryOfOrigin", "FoundedYear", "HeadQuartersLocation", "Name" },
+                values: new object[] { 2, "USA", 1897, "NY, NY", "Doubleday" });
 
             migrationBuilder.InsertData(
                 table: "books",
@@ -123,7 +123,7 @@ namespace BooksAPI.Migrations
                 name: "authors");
 
             migrationBuilder.DropTable(
-                name: "Publisher");
+                name: "publishers");
         }
     }
 }
